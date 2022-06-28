@@ -23,6 +23,8 @@ while True:
     try:
       IMAGE=cv2.cvtColor(COLOR,cv2.COLOR_BGR2RGB)
       IMG=face_recogniton.face_encoding(IMAGE)[0]
+    result = face_recognition.compare_faces([img_encoding], img_encod>
+    print(result)
     cv2.imshow('frame', frame)
     if cv2.waitKey(20) & 0xFF == ord('q'):
         break
