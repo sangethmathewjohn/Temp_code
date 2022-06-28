@@ -1,0 +1,117 @@
+#include <SoftwareSerial.h>
+SoftwareSerial espSerial(0,1);
+
+String arr="00000";
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT);
+  pinMode(A2, INPUT);
+  pinMode(A3, INPUT);
+  pinMode(A4, INPUT);
+  pinMode(A5, INPUT);
+  pinMode(A6, INPUT);
+  pinMode(A7, INPUT);
+}
+
+void loop() {
+  int threshold=500;
+  Serial.println(analogRead(A5));
+  Serial.println(analogRead(A6));
+  Serial.println(analogRead(A7));
+if(analogRead(A0)>threshold){
+  Serial.println("F1");
+  Serial.println(analogRead(A0));
+  Serial.println("-------------------------------------------------");
+  digitalWrite(3,HIGH);
+  digitalWrite(4,LOW);
+  digitalWrite(5,LOW);
+  arr[0]='1';
+  }
+  else{
+    arr[0]='0';
+  }
+  if(analogRead(A1)>threshold){
+  Serial.println("F2");
+   Serial.println(analogRead(A1));
+  Serial.println("-------------------------------------------------");
+  digitalWrite(4,HIGH);
+  digitalWrite(5,LOW);
+  arr[1]='1';
+  }
+  else{
+    arr[1]='0';
+  }
+  if(analogRead(A2)>threshold){
+  Serial.println("F3");
+   Serial.println(analogRead(A2));
+  Serial.println("-------------------------------------------------");
+  digitalWrite(5,HIGH);
+  digitalWrite(4,LOW);
+  digitalWrite(3,LOW);
+  arr[2]='1';
+  }
+  else{
+    arr[2]='0';
+  }
+  if(analogRead(A3)>threshold){
+  Serial.println("F4");
+   Serial.println(analogRead(A3));
+  Serial.println("-------------------------------------------------");
+  digitalWrite(3,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,LOW);
+  arr[3]='1';
+  }
+  else{
+    arr[3]='0';
+  }
+  if(analogRead(A4)>threshold){
+  Serial.println("F5");
+   Serial.println(analogRead(A4));
+  Serial.println("-------------------------------------------------");
+  digitalWrite(3,HIGH);
+  digitalWrite(4,LOW);
+  digitalWrite(5,HIGH);
+  arr[4]='1';
+  }
+  else{
+    arr[4]='0';
+  }
+delay(2000);
+Serial.println();
+
+Serial.println(arr);
+if(arr=="11111"){
+  Serial.println("HAlT/");
+  espSerial.println("HAlT/");
+}
+
+if(arr=="11011"){
+  Serial.println("F***K");
+  espSerial.println("F***K/");
+}
+if(arr=="10011"){
+  Serial.println("PEACE");
+  espSerial.println("PEACE/");
+}
+if(arr=='11001'){
+  Serial.println("LOVE");
+  espSerial.println("LOVE/");
+}
+if(arr=='11000'){
+  Serial.println("SHOOT");
+  espSerial.println("SHOOT/");
+}
+if(arr=="00000"){
+  Serial.println("HI");
+  espSerial.println("HI");
+}
+if(arr=='00111'){
+  Serial.println("SMILE");
+  espSerial.println("SMILE/");
+}
+
+Serial.println();
+}
